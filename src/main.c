@@ -4,7 +4,7 @@
 #include <libopencm3/stm32/rcc.h>
 #include <libopencm3/stm32/gpio.h>
 
-// TaskHandle_t *task_1_handle;
+#include <stdio.h>
 
 // Handler in case our application overflows the stack
 void vApplicationStackOverflowHook(
@@ -23,8 +23,10 @@ void vApplicationMallocFailedHook(void)
     ;
 }
 
-static void task_1(void const *args)
+static void task_1(void const *args)  
 {
+  // printf("Starting task 1...\n");
+
   while (true)
   {
     for (int i = 0; i < 500000; i++)
