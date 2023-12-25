@@ -4,8 +4,10 @@ BUILD_DIR = bin
 FREERTOS_SRC = ../freertos
 FREERTOS_HEADERS = ../freertos/include
 
+PROJ_HEADERS = ../include
+
 INCLUDES += -I$(FREERTOS_HEADERS)
-INCLUDES += -I$(FREERTOS_SRC)/portable/GCC/ARM_CM3
+INCLUDES += -I$(PROJ_HEADERS)
 
 TGT_CFLAGS	+= -I$(FREERTOS_HEADERS)
 TGT_CXXFLAGS	+= -I$(FREERTOS_HEADERS)
@@ -14,7 +16,7 @@ LDFLAGS += --specs=rdimon.specs
 LDLIBS += -lrdimon
 
 CFILES = main.c
-CFILES +=$(FREERTOS_SRC)/portable/GCC/ARM_CM3/port.c  $(FREERTOS_SRC)/tasks.c  $(FREERTOS_SRC)/list.c $(FREERTOS_SRC)/queue.c $(FREERTOS_SRC)/portable/MemMang/heap_2.c 
+CFILES +=$(FREERTOS_SRC)/port.c  $(FREERTOS_SRC)/tasks.c  $(FREERTOS_SRC)/list.c $(FREERTOS_SRC)/queue.c $(FREERTOS_SRC)/heap_4.c 
 
 # Edit for a specific microcontroller
 DEVICE=stm32f103c8
