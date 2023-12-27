@@ -21,7 +21,7 @@ First build libopencm3 by running
 make -C libopencm3/
 ```
 
-Then, run the following to build main.c and the necessary FreeRTOS source files. This will generate a .bin and .elf file for flashing and symbols respectively.
+Then, run the following to build the actual project. This will generate a .bin and .elf file for flashing and symbols respectively.
 ```bash
 make -C src/
 ```
