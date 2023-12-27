@@ -28,47 +28,28 @@ void vApplicationMallocFailedHook(void)
     ;
 }
 
-void vConfigureTimerForRunTimeStats(void)
-{
-  // Enable clock for Timer 2
-  rcc_periph_clock_enable(RCC_TIM2);
-
-  // Rese the clock to 0
-  timer_set_counter(TIM2, 0);
-
-  // Configure it to count up and etc.
-  timer_set_mode(TIM2, TIM_CR1_CKD_CK_INT, TIM_CR1_CMS_EDGE, TIM_CR1_DIR_UP);
-
-  // Calculate and set a good prescaler value
-  uint32_t prescaler_value = (configCPU_CLOCK_HZ / configTICK_RATE_HZ) - 1;
-  timer_set_prescaler(TIM2, prescaler_value);
-
-  // Generate an update event and enable the counter
-  timer_generate_event(TIM2, TIM_EGR_UG);
-  timer_enable_counter(TIM2);
-}
-
+// Returns the current value of TIM2 for runtime stats purposes
 uint32_t ulGetRunTimeCounterValue(void)
 {
   return timer_get_counter(TIM2);
 }
 
-static uint32_t counter = 0;
+static uint32_t ulCounter = 0;
 
-static void __attribute__((optimize("O0"))) task_1(void const *args)
+static void __attribute__((optimize("O0"))) vTask1(void const *args)
 {
   (void)args;
-  TickType_t last_execution_time = xTaskGetTickCount();
-  uint32_t time_to_wait = pdMS_TO_TICKS(3000);
+  TickType_t ulLastExecutionTime = xTaskGetTickCount();
+  uint32_t ulTimeToWait = pdMS_TO_TICKS(3000);
 
   while (true)
   {
-    vTaskDelayUntil(&last_execution_time, time_to_wait);
+    vTaskDelayUntil(&ulLastExecutionTime, ulTimeToWait);
     gpio_toggle(GPIOC, GPIO13);
   }
 }
 
-static void __attribute__((optimize("O0"))) task_2(void const *args)
+static void __attribute__((optimize("O0"))) vTask2(void const *args)
 {
   (void)args;
 
@@ -79,11 +60,11 @@ static void __attribute__((optimize("O0"))) task_2(void const *args)
       __asm__("nop");
     }
 
-    counter++;
+    ulCounter++;
   }
 }
 
-static void __attribute__((optimize("O0"))) task_3(void const *args)
+static void __attribute__((optimize("O0"))) vTask3(void const *args)
 {
   (void)args;
 
@@ -94,19 +75,18 @@ static void __attribute__((optimize("O0"))) task_3(void const *args)
       __asm__("nop");
     }
 
-    counter++;
+    ulCounter++;
   }
 }
 
 int main(void)
 {
   rcc_clock_setup_in_hse_8mhz_out_72mhz();
+  vSetupGpio();
 
-  setup_gpio();
-
-  xTaskCreate(task_1, "Toggle LED", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, NULL);
-  xTaskCreate(task_2, "Count", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
-  xTaskCreate(task_3, "Count2", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
+  xTaskCreate(vTask1, "Toggle LED", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, NULL);
+  xTaskCreate(vTask2, "Count", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
+  xTaskCreate(vTask3, "Count2", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
 
   vTaskStartScheduler();
 
