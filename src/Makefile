@@ -9,13 +9,13 @@ PROJ_HEADERS = ../include
 INCLUDES += -I$(FREERTOS_HEADERS)
 INCLUDES += -I$(PROJ_HEADERS)
 
-TGT_CFLAGS	+= -I$(FREERTOS_HEADERS)
-TGT_CXXFLAGS	+= -I$(FREERTOS_HEADERS)
+TGT_CFLAGS	+= -I$(FREERTOS_HEADERS) -I$(PROJ_HEADERS)
+TGT_CXXFLAGS	+= -I$(FREERTOS_HEADERS) -I$(PROJ_HEADERS)
 
 LDFLAGS += --specs=rdimon.specs
 LDLIBS += -lrdimon
 
-CFILES = main.c
+CFILES = main.c setup.c
 CFILES +=$(FREERTOS_SRC)/port.c  $(FREERTOS_SRC)/tasks.c  $(FREERTOS_SRC)/list.c $(FREERTOS_SRC)/queue.c $(FREERTOS_SRC)/heap_4.c 
 
 # Edit for a specific microcontroller
