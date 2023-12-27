@@ -15,6 +15,7 @@ void vApplicationStackOverflowHook(
     TaskHandle_t xTask __attribute__((unused)),
     char *pcTaskName)
 {
+  (void)pcTaskName;
 
   for (;;)
     ;
