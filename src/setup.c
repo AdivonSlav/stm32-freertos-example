@@ -23,7 +23,7 @@ void vConfigureTimerForRunTimeStats(void)
   // Enable clock for Timer 2
   rcc_periph_clock_enable(RCC_TIM2);
 
-  // Rese the clock to 0
+  // Reset the clock to 0
   timer_set_counter(TIM2, 0);
 
   // Configure it to count up and etc.
