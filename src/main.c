@@ -49,11 +49,21 @@ int main(void)
 
   //////////////////////////////
 
-  vSynchDemoInitSemaphore();
-  xTaskCreate(vSynchDemoTask1, "Toggle LED with semaphore wait", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, NULL);
-  xTaskCreate(vSynchDemoTask2, "Toggle LED", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
+  // Synchronization demo
 
-  vTaskStartScheduler();
+  // Binary semaphore example
+  // vSynchDemoInitSemaphore();
+  // xTaskCreate(vSyncDemoSemaphoreConsumer, "Consume semaphore", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
+  // xTaskCreate(vSyncDemoSemaphoreSignaller, "Signal semaphore", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
+
+  // Mutex example
+  // vSyncDemoInitMutex();
+  // xTaskCreate(vSyncDemoMutexTask1, "Mutex task 1", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, NULL);
+  // xTaskCreate(vSyncDemoMutexTask2, "Mutex task 2", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
+
+  // vTaskStartScheduler();
+
+  //////////////////////////////
 
   while (true)
   {
