@@ -7,6 +7,11 @@
 
 #include "setup.h"
 
+void vSetupSystemClock(void)
+{
+  rcc_clock_setup_in_hse_8mhz_out_72mhz();
+}
+
 void vSetupGpio(void)
 {
   // Enable the system clock for GPIO channel C

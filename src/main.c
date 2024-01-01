@@ -36,10 +36,10 @@ uint32_t ulGetRunTimeCounterValue(void)
 
 int main(void)
 {
-  rcc_clock_setup_in_hse_8mhz_out_72mhz();
+  vSetupSystemClock();
   vSetupGpio();
 
-  // Task scheduler demo
+  // Task scheduler demo //
 
   // xTaskCreate(vSchedulerDemoTask1, "Toggle LED", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, NULL);
   // xTaskCreate(vSchedulerDemoTask2, "Count", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
@@ -49,7 +49,7 @@ int main(void)
 
   //////////////////////////////
 
-  // Synchronization demo
+  // Synchronization demo //
 
   // Binary semaphore example
   // vSynchDemoInitSemaphore();
