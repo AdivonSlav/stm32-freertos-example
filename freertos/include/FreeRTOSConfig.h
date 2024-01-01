@@ -105,14 +105,15 @@
 #define configUSE_MUTEXES 1
 #define configCHECK_FOR_STACK_OVERFLOW 1
 #define configUSE_MALLOC_FAILED_HOOK 1
-#define configGENERATE_RUN_TIME_STATS 1
 #define configUSE_STATS_FORMATTING_FUNCTIONS 1
+#define configUSE_TASK_NOTIFICATIONS 1
 
-extern void vConfigureTimerForRunTimeStats(void);
-extern uint32_t ulGetRunTimeCounterValue(void);
+// #define configGENERATE_RUN_TIME_STATS 1
+// extern void vConfigureTimerForRunTimeStats(void);
+// extern uint32_t ulGetRunTimeCounterValue(void);
 
-#define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() vConfigureTimerForRunTimeStats()
-#define portGET_RUN_TIME_COUNTER_VALUE() ulGetRunTimeCounterValue()
+// #define portCONFIGURE_TIMER_FOR_RUN_TIME_STATS() vConfigureTimerForRunTimeStats()
+// #define portGET_RUN_TIME_COUNTER_VALUE() ulGetRunTimeCounterValue()
 
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES 0
