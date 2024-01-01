@@ -1,3 +1,5 @@
+#pragma once
+
 #include "task.h"
 
 #define mainLOW_PRIORITY (tskIDLE_PRIORITY + 1)

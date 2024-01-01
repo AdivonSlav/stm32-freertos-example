@@ -1,8 +1,9 @@
-#include <FreeRTOS.h>
+#include "FreeRTOS.h"
 
-#include <libopencm3/stm32/rcc.h>
-#include <libopencm3/stm32/gpio.h>
-#include <libopencm3/stm32/timer.h>
+#include "libopencm3/stm32/rcc.h"
+#include "libopencm3/stm32/gpio.h"
+#include "libopencm3/stm32/timer.h"
+#include "libopencm3/cm3/nvic.h"
 
 #include "setup.h"
 
@@ -18,6 +19,28 @@ void vSetupGpio(void)
   gpio_set(GPIOC, GPIO13);
 }
 
+// void vInterruptDemoSetupClock(void)
+// {
+//   nvic_enable_irq(NVIC_TIM2_IRQ);
+//   nvic_set_priority(NVIC_TIM2_IRQ, 1);
+//   rcc_periph_clock_enable(RCC_TIM2);
+
+//   rcc_periph_reset_pulse(RST_TIM2);
+
+//   timer_set_mode(TIM2, TIM_CR1_CKD_CK_INT, TIM_CR1_CMS_EDGE, TIM_CR1_DIR_UP);
+
+//   // timer_set_prescaler(TIM2, rcc_ahb_frequency / 1000);
+//   timer_set_prescaler(TIM2, 72000);
+
+//   timer_enable_preload(TIM2);
+
+//   timer_set_period(TIM2, 3000);
+
+//   timer_enable_irq(TIM2, TIM_DIER_UIE);
+//   timer_enable_counter(TIM2);
+// }
+
+/*
 void vConfigureTimerForRunTimeStats(void)
 {
   // Enable clock for Timer 2
@@ -37,3 +60,4 @@ void vConfigureTimerForRunTimeStats(void)
   timer_generate_event(TIM2, TIM_EGR_UG);
   timer_enable_counter(TIM2);
 }
+*/
