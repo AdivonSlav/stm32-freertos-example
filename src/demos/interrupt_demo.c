@@ -8,8 +8,6 @@
 
 #include "interrupt_demo.h"
 
-#include <limits.h>
-
 TaskHandle_t xTask1Handle;
 TaskHandle_t xTask2Handle;
 

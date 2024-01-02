@@ -1,7 +1,7 @@
-#include "libopencm3/stm32/gpio.h"
-
 #include "FreeRTOS.h"
 #include "task.h"
+
+#include "libopencm3/stm32/gpio.h"
 
 #include "scheduler_demo.h"
 

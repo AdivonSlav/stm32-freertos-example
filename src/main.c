@@ -1,15 +1,13 @@
 #include "FreeRTOS.h"
 #include "task.h"
 
-#include "libopencm3/stm32/rcc.h"
-#include "libopencm3/stm32/gpio.h"
-#include "libopencm3/stm32/timer.h"
-
 #include "setup.h"
 #include "task_priorities.h"
 #include "scheduler_demo.h"
 #include "synchronization_demo.h"
 #include "interrupt_demo.h"
+
+#include <stdbool.h>
 
 // Handler in case our application overflows the stack
 void vApplicationStackOverflowHook(
