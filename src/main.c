@@ -68,6 +68,10 @@ int main(void)
 
   // Interrupt example
   vInterruptDemoInitClock();
+  xTaskCreate(vInterruptDemoTask1, "Task 1 (needs to be notified)", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, &xTask1Handle);
+  xTaskCreate(vInterruptDemoTask2, "Task 2", configMINIMAL_STACK_SIZE, NULL, mainNORMAL_PRIORITY, &xTask2Handle);
+
+  vTaskStartScheduler();
 
   while (true)
   {
