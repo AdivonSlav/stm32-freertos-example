@@ -29,19 +29,12 @@ void vApplicationMallocFailedHook(void)
     ;
 }
 
-// Returns the current value of TIM2 for runtime stats purposes
-uint32_t ulGetRunTimeCounterValue(void)
-{
-  return timer_get_counter(TIM2);
-}
-
 int main(void)
 {
   vSetupSystemClock();
   vSetupGpio();
 
   // Task scheduler demo //
-
   // xTaskCreate(vSchedulerDemoTask1, "Toggle LED", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, NULL);
   // xTaskCreate(vSchedulerDemoTask2, "Count", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
   // xTaskCreate(vSchedulerDemoTask3, "Count2", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
@@ -67,11 +60,13 @@ int main(void)
   //////////////////////////////
 
   // Interrupt example
-  vInterruptDemoInitClock();
-  xTaskCreate(vInterruptDemoTask1, "Task 1 (needs to be notified)", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, &xTask1Handle);
-  xTaskCreate(vInterruptDemoTask2, "Task 2", configMINIMAL_STACK_SIZE, NULL, mainNORMAL_PRIORITY, &xTask2Handle);
+  // vInterruptDemoInitClock();
+  // xTaskCreate(vInterruptDemoTask1, "Task 1 (needs to be notified)", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, &xTask1Handle);
+  // xTaskCreate(vInterruptDemoTask2, "Task 2", configMINIMAL_STACK_SIZE, NULL, mainNORMAL_PRIORITY, &xTask2Handle);
 
-  vTaskStartScheduler();
+  // vTaskStartScheduler();
+
+  //////////////////////////////
 
   while (true)
   {

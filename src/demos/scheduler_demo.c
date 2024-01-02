@@ -14,7 +14,18 @@ void __attribute__((optimize("O0"))) vSchedulerDemoTask1(void const *args)
   while (true)
   {
     vTaskDelayUntil(&ulLastExecutionTime, ulTimeToWait);
+
+    for (int i = 0; i < 1000000; i++)
+    {
+      __asm__("nop");
+    }
+
     gpio_toggle(GPIOC, GPIO13);
+
+    for (int i = 0; i < 1000000; i++)
+    {
+      __asm__("nop");
+    }
   }
 }
 
