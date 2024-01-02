@@ -9,6 +9,7 @@
 #include "task_priorities.h"
 #include "scheduler_demo.h"
 #include "synchronization_demo.h"
+#include "interrupt_demo.h"
 
 // Handler in case our application overflows the stack
 void vApplicationStackOverflowHook(
@@ -64,6 +65,9 @@ int main(void)
   // vTaskStartScheduler();
 
   //////////////////////////////
+
+  // Interrupt example
+  vInterruptDemoInitClock();
 
   while (true)
   {
