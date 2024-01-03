@@ -6,6 +6,7 @@
 #include "scheduler_demo.h"
 #include "synchronization_demo.h"
 #include "interrupt_demo.h"
+#include "communication_demo.h"
 
 #include <stdbool.h>
 
@@ -32,7 +33,7 @@ int main(void)
   vSetupSystemClock();
   vSetupGpio();
 
-  // Task scheduler demo //
+  // Task scheduler example //
   // xTaskCreate(vSchedulerDemoTask1, "Toggle LED", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, NULL);
   // xTaskCreate(vSchedulerDemoTask2, "Count", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
   // xTaskCreate(vSchedulerDemoTask3, "Count2", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
@@ -41,7 +42,7 @@ int main(void)
 
   //////////////////////////////
 
-  // Synchronization demo //
+  // Synchronization example //
 
   // Binary semaphore example
   // vSynchDemoInitSemaphore();
@@ -57,7 +58,8 @@ int main(void)
 
   //////////////////////////////
 
-  // Interrupt example
+  // Interrupt example //
+
   // vInterruptDemoInitClock();
   // xTaskCreate(vInterruptDemoTask1, "Task 1 (needs to be notified)", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, &xTask1Handle);
   // xTaskCreate(vInterruptDemoTask2, "Task 2", configMINIMAL_STACK_SIZE, NULL, mainNORMAL_PRIORITY, &xTask2Handle);
@@ -65,6 +67,17 @@ int main(void)
   // vTaskStartScheduler();
 
   //////////////////////////////
+
+  // Communication example
+
+  vCommunicationDemoInitQueue();
+
+  xTaskCreate(vCommunicationDemoTask1, "Queue sender", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
+  xTaskCreate(vCommunicationDemoTask2, "Queue consumer", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
+
+  vTaskStartScheduler();
+
+  /////////////////////////////
 
   while (true)
   {
