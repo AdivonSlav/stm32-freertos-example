@@ -37,7 +37,7 @@ void __attribute__((optimize("O0"))) vInterruptDemoTask1(void const *args)
 
   while (true)
   {
-    ulTaskNotifyTake(pdTRUE, pdMS_TO_TICKS(100));
+    ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
     gpio_toggle(GPIOC, GPIO13);
   }
 }
