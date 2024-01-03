@@ -20,9 +20,9 @@ void vInterruptDemoInitClock(void)
 
   timer_set_counter(TIM2, 1);
 
-  // 2 second interval
-  // 72000000Hz / (0.5Hz * (65535 + 1))
-  // Prescaler = 2195
+  // 4 second interval
+  // (72000000 * 4) / 65535 - 1
+  // Prescaler = 4390
   timer_set_prescaler(TIM2, 4390);
   timer_enable_preload(TIM2);
   timer_set_period(TIM2, 65535);
@@ -37,7 +37,7 @@ void __attribute__((optimize("O0"))) vInterruptDemoTask1(void const *args)
 
   while (true)
   {
-    ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
+    ulTaskNotifyTake(pdTRUE, pdMS_TO_TICKS(100));
     gpio_toggle(GPIOC, GPIO13);
   }
 }

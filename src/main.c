@@ -70,12 +70,12 @@ int main(void)
 
   // Communication example
 
-  vCommunicationDemoInitQueue();
+  // vCommunicationDemoInitQueue();
 
-  xTaskCreate(vCommunicationDemoTask1, "Queue sender", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
-  xTaskCreate(vCommunicationDemoTask2, "Queue consumer", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
+  // xTaskCreate(vCommunicationDemoTask1, "Queue sender", configMINIMAL_STACK_SIZE, NULL, mainNORMAL_PRIORITY, NULL);
+  // xTaskCreate(vCommunicationDemoTask2, "Queue consumer", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
 
-  vTaskStartScheduler();
+  // vTaskStartScheduler();
 
   /////////////////////////////
 

@@ -48,7 +48,7 @@ void __attribute__((optimize("O0"))) vSyncDemoSemaphoreSignaller(void const *arg
 
   while (true)
   {
-    for (int i = 0; i < 1000000; i++)
+    for (int i = 0; i < 200000; i++)
     {
       __asm__("nop");
     }
