@@ -16,6 +16,8 @@ void vCommunicationDemoInitQueue(void)
 
 void __attribute__((optimize("O0"))) vCommunicationDemoTask1(void const *args)
 {
+  (void)args;
+
   while (true)
   {
     for (int i = 1; i < 65535; i++)
@@ -31,6 +33,8 @@ void __attribute__((optimize("O0"))) vCommunicationDemoTask1(void const *args)
 
 void __attribute__((optimize("O0"))) vCommunicationDemoTask2(void const *args)
 {
+  (void)args;
+
   while (true)
   {
     uint16_t usReceivedNumber;

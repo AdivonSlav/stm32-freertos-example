@@ -38,8 +38,6 @@ int main(void)
   // xTaskCreate(vSchedulerDemoTask2, "Count", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
   // xTaskCreate(vSchedulerDemoTask3, "Count2", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
 
-  // vTaskStartScheduler();
-
   //////////////////////////////
 
   // Synchronization example //
@@ -54,8 +52,6 @@ int main(void)
   // xTaskCreate(vSyncDemoMutexTask1, "Mutex task 1", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, NULL);
   // xTaskCreate(vSyncDemoMutexTask2, "Mutex task 2", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
 
-  // vTaskStartScheduler();
-
   //////////////////////////////
 
   // Interrupt example //
@@ -63,8 +59,6 @@ int main(void)
   // vInterruptDemoInitClock();
   // xTaskCreate(vInterruptDemoTask1, "Task 1 (needs to be notified)", configMINIMAL_STACK_SIZE, NULL, mainHIGH_PRIORITY, &xTask1Handle);
   // xTaskCreate(vInterruptDemoTask2, "Task 2", configMINIMAL_STACK_SIZE, NULL, mainNORMAL_PRIORITY, &xTask2Handle);
-
-  // vTaskStartScheduler();
 
   //////////////////////////////
 
@@ -75,9 +69,9 @@ int main(void)
   // xTaskCreate(vCommunicationDemoTask1, "Queue sender", configMINIMAL_STACK_SIZE, NULL, mainNORMAL_PRIORITY, NULL);
   // xTaskCreate(vCommunicationDemoTask2, "Queue consumer", configMINIMAL_STACK_SIZE, NULL, mainLOW_PRIORITY, NULL);
 
-  // vTaskStartScheduler();
-
   /////////////////////////////
+
+  vTaskStartScheduler();
 
   while (true)
   {
